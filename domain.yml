@@ -1,5 +1,6 @@
 version: "2.0"
 
+# se definen cada una de las intents presentes en el archivo nlu.yml
 intents:
   - greet
   - goodbye
@@ -9,6 +10,34 @@ intents:
   - mood_unhappy
   - bot_challenge
 
+# se definen las entidades que se pueden reconocer en el dialogo
+
+# entidad Modos: asistente, representante
+entities:
+  - entity: modo
+    values:
+      - asistente
+      - representante
+
+# entidad de ctividades: definir todas actividades que se les ocurran de un proceso de desarollo, por ejemplo crear task, modificar task.
+entities:
+  - entity: actividad_desarrollo
+    values:
+      - definir task
+      - eliminar task
+      - iniciar sprint
+      - finalizar sprint
+      - iniciar meeting
+      - modificar task  # modificar task deberia contener a las siguientes actividades? p.e asignar, mover, etc.
+      - asignar task
+      - mover task
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+# se definen cada una de las respuestas que se le pueden dar a las intents
 responses:
   utter_greet:
   - text: "Hey! How are you?"
@@ -29,6 +58,5 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+
+# actions: #se definen las acciones que se pueden realizar durante un dialogo

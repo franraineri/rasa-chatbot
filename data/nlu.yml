@@ -1,6 +1,60 @@
 version: "2.0"
 
 nlu:
+
+#se definen ejemplos de la intencion de saludar
+
+- intent: saludar
+  examples: |
+    - Hola, ¿cómo estás?
+    - Buenas tardes
+    - Buenas noches
+    - Hola, que tal?
+
+- intent: despedirse
+  examples: |
+    - Adiós
+    - Hasta luego
+    - Hasta pronto
+    - Hasta la próxima
+    - nos vemos
+    - nos vemos pronto
+    - chau
+
+- intent: afirmar
+  examples: |
+    - Si 
+    - Si, sí
+    - Si, por supuesto
+    - Por supuesto
+    - Genial
+    - Perfecto
+    - Muy bien
+    - Muy bien, gracias
+    - bien
+
+- intent: negar
+  examples: |
+    - no
+    - no, no
+    - no, gracias
+    - no hay forma
+    - preferiria que no
+    - para nada
+
+#se definen ejemplos en los que se pregunta si es un bot
+- intent: defia_al_bot
+  examples: |
+    - ¿Es un bot?
+    - ¿Es una persona?
+    - Sos un bot ?
+    - Sos una persona?
+    - Que sos ?
+    - estoy hablando con un bot ?
+    - estoy hablando con una persona ?  
+
+
+## A partir de aca son ejemplos predefinidos en ingles. Habria que quitarlos ?
 - intent: greet
   examples: |
     - hey
