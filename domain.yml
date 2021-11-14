@@ -14,23 +14,39 @@ intents:
 
 # entidad Modos: asistente, representante
 entities:
-  - entity: modo
+  - entity: modo_agilebot
     values:
       - asistente
       - representante
 
-# entidad de ctividades: definir todas actividades que se les ocurran de un proceso de desarollo, por ejemplo crear task, modificar task.
-entities:
-  - entity: actividad_desarrollo
+  - entity: artefacto
     values:
-      - definir task
-      - eliminar task
-      - iniciar sprint
-      - finalizar sprint
-      - iniciar meeting
-      - modificar task  # modificar task deberia contener a las siguientes actividades? p.e asignar, mover, etc.
-      - asignar task
-      - mover task
+      - task    # recordar definir los sinonimos
+      - pruduct backlog
+      - sprint backlog
+      - product increment       
+
+  - entity: evento
+    values:
+      - daily meeting
+      - sprint
+      - sprint review
+      - sprint retrospective
+
+  - entity: rol
+    values:
+      - developer
+      - tester
+      - scrum master
+      - product owner
+      - team leader
+      - tech leader
+      - full stack developer
+      - front end developer
+      - back end developer
+      - QA engineer
+      - QA tester
+      - QA analyst
 
 
 session_config:

@@ -3,9 +3,27 @@
 1. Hacer un bot en rasa comun con rasa init
 2. Escribir entities: 
     Modos: asistente, representante. Roles: scrummaster, etc etc, y todos los entities que se les ocurran de un proceso de desarrollo de software.
-    Actividades: definir todas actividades que se les ocurran de un proceso de desarollo, por ejemplo crear task, modificar task. todas estas entidades se escriben en los ejemplos de intents
+         todas estas entidades se escriben en los ejemplos de intents
 
 3. Definir los ejemplos de intents que permitan ejecutar las acciones para interactuar con el mundo sintetico, siguiendo las buenas practicas recomendadas por rasa (buscarlas en la docu). Todos las entidades tienen que estar participando aca, siendo importante no repetir intents para agregar las entidades.  ¡Escribirlas en rules, las stories quedan vacias!
+
+¿que intenciones deberiamos desarrollar? una intencion por cada metodo en las clases que podemos comunicarnos.
+Nosotros podemos comunicarnos con las clases ExchangeManager y Messenger, cuyos metodos son:
+
+Messenger:
++ send_message(agilebot_id: string, activity_name: string, parameters: Dict)
++ create_agilebot(agilebot:_id: string, role: string, mode: string)
++ change_agilebot_role(agilebot_id: string, new_role:string)
++ change_agilebot_mode(agilebot_id: string, new_mode: string)
+
+ExchangeManager:
++ add_exchange(exchange:Exchange):string
++ remove_exchange(exchange_name:string):string
++ remove_all_suscribers(exchange_name: string) 
++ remove_agilebot_from_all(agilebot_id: string) 
++ remove_agilebot_from_some(agilebot_id: string, exchanges: List<string>) 
++ add_subscriber(exchange_name:str, agilebot: Agilebot, activity_name:string):string
++ publish(exchange_name: string, parameters: Dict):string
 
 4. Implementar las acciones que generaran las requests para interactuar con el mundo sintetico. Estas deben responder los parametros que se procesan en el dispatcher (ver cuales) que seran devueltos al commutator si es un mensaje/evento, y  se debe enviar al componente correspondiente, la ejecucion con los parametros obtenidos, deben estar todos, si no informar error, en caso de ser evento, luego de disparado retornar ok, y en caso de ser mensaje debe esperarse la respuesta.
 
@@ -16,6 +34,7 @@ Links a la documentacion de buenas practicas:
 https://rasa.com/blog/10-best-practices-for-designing-nlu-training-data/
 
 # Resumen de las buenas practicas
+
 1. Utilice datos reales.
 
 concéntrese en construir su conjunto de datos a lo largo del tiempo, utilizando ejemplos de conversaciones reales . Esto significa que no tendrá tantos datos para empezar, pero los ejemplos que tiene no son hipotéticos, son cosas que han dicho usuarios reales, que es el mejor predictor de lo que dirán los usuarios futuros.
@@ -41,3 +60,7 @@ Una intención fuera del alcance es un comodín para cualquier cosa que el usuar
 
 8. Maneje las palabras mal escritas.
 Es un hecho que los mensajes que los usuarios envían a su asistente contendrán errores de ortografía, así es la vida. Muchos desarrolladores intentan solucionar este problema utilizando un componente de corrector ortográfico personalizado en su canal de NLU. Pero diríamos que su primera línea de defensa contra los errores ortográficos deberían ser sus datos de entrenamiento.
+
+
+
+instalar pyenv

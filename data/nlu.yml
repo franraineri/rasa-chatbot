@@ -2,6 +2,32 @@ version: "2.0"
 
 nlu:
 
+# una intencion por cada metodo en las clases que podemos comunicarnos.
+# Nosotros podemos comunicarnos con las clases ExchangeManager y Messenger, cuyos metodos son:
+
+# Messenger:
+# + send_message(agilebot_id: string, activity_name: string, parameters: Dict)
+# + create_agilebot(agilebot:_id: string, role: string, mode: string)
+# + change_agilebot_role(agilebot_id: string, new_role:string)
+# + change_agilebot_mode(agilebot_id: string, new_mode: string)
+
+# ExchangeManager:
+# + add_exchange(exchange:Exchange):string
+# + remove_exchange(exchange_name:string):string
+# + remove_all_suscribers(exchange_name: string) 
+# + remove_agilebot_from_all(agilebot_id: string) 
+# + remove_agilebot_from_some(agilebot_id: string, exchanges: List<string>) 
+# + add_subscriber(exchange_name:str, agilebot: Agilebot, activity_name:string):string
+# + publish(exchange_name: string, parameters: Dict):string
+
+#ejemplos para el intent send_message:
+- intent: send_message
+  examples: | 
+    - quiero enviar un mensaje a un agilebot
+    - quisiera enviar un mensaje a un agilebot de una actividad
+    - me gustaria enviar una actividad a un agilebot
+    - quisiera comunicar una task a un agilebot 
+
 #se definen ejemplos de la intencion de saludar
 
 - intent: saludar
