@@ -1,15 +1,29 @@
 # To Do
-
 1. Hacer un bot en rasa comun con rasa init
 2. Escribir entities: 
     Modos: asistente, representante. Roles: scrummaster, etc etc, y todos los entities que se les ocurran de un proceso de desarrollo de software.
-         todas estas entidades se escriben en los ejemplos de intents
+         todas estas entidades se deben escribir en los ejemplos de intents
 
-3. Definir los ejemplos de intents que permitan ejecutar las acciones para interactuar con el mundo sintetico, siguiendo las buenas practicas recomendadas por rasa (buscarlas en la docu). Todos las entidades tienen que estar participando aca, siendo importante no repetir intents para agregar las entidades.  ¡Escribirlas en rules, las stories quedan vacias!
+3. Definir los ejemplos de intents que permitan ejecutar las acciones para interactuar con el mundo sintetico, siguiendo las buenas practicas recomendadas por rasa (buscarlas en la docu). 
+Todos las entidades tienen que estar participando aca, siendo importante no repetir intents para agregar las entidades.  ¡Escribirlas en rules, las stories quedan vacias!
 
-¿que intenciones deberiamos desarrollar? una intencion por cada metodo en las clases que podemos comunicarnos.
-Nosotros podemos comunicarnos con las clases ExchangeManager y Messenger, cuyos metodos son:
+# Duda preguntada a GianLucas
+- ¿que intenciones deberiamos desarrollar?
++ Una intencion por cada metodo  en las clases que podemos comunicarnos.
+ Nosotros podemos comunicarnos con las clases ExchangeManager y Messenger, cuyos metodos son:
 
+4. Implementar las acciones que generaran las requests para interactuar con el mundo sintetico. Estas deben responder los parametros que se procesan en el dispatcher (ver cuales) que seran devueltos al commutator si es un mensaje/evento, y  se debe enviar al componente correspondiente, la ejecucion con los parametros obtenidos, deben estar todos, si no informar error, en caso de ser evento, luego de disparado retornar ok, y en caso de ser mensaje debe esperarse la respuesta.
+
+Este ultimo punto hace ref que si viene un mensaje "quiero crear al agilebot franco con el rol scrumm y modo asistente" en la custom action hay que filtrar la data importante, el metodo, crear agilebot. los aprametros rol, modo y nombre/id y eso vuelve al commutator para que lo ejecute
+
+
+  # guardar ciertos parametros en slots 
+  # si lo haga como una lista, rasa por def. hace un autofill y pisa el slot anterior 
+  # hace falta que el append lo haga a traves de una action, y desactivar el autofill ( ver en docuentacion))  
+
+
+
+# Metodos de las clases vecinas
 Messenger:
 + send_message(agilebot_id: string, activity_name: string, parameters: Dict)
 + create_agilebot(agilebot:_id: string, role: string, mode: string)
@@ -25,13 +39,14 @@ ExchangeManager:
 + add_subscriber(exchange_name:str, agilebot: Agilebot, activity_name:string):string
 + publish(exchange_name: string, parameters: Dict):string
 
-4. Implementar las acciones que generaran las requests para interactuar con el mundo sintetico. Estas deben responder los parametros que se procesan en el dispatcher (ver cuales) que seran devueltos al commutator si es un mensaje/evento, y  se debe enviar al componente correspondiente, la ejecucion con los parametros obtenidos, deben estar todos, si no informar error, en caso de ser evento, luego de disparado retornar ok, y en caso de ser mensaje debe esperarse la respuesta.
 
-Este ultimo punto hace ref que si viene un mensaje "quiero crear al agilebot franco con el rol scrumm y modo asistente" en la custom action hay que filtrar la data importante, el metodo, crear agilebot. los aprametros rol, modo y nombre/id y eso vuelve al commutator para que lo ejecute
-
-
+# Entities = Slots = Look at tables
 Links a la documentacion de buenas practicas:
 https://rasa.com/blog/10-best-practices-for-designing-nlu-training-data/
+
+https://forum.rasa.com/t/solved-how-to-use-check-points-in-story/1351
+
+http://www.forosdelweb.com/f183/expresion-regular-con-1-solo-guion-guion-bajo-1155549/ 
 
 # Resumen de las buenas practicas
 

@@ -2,34 +2,156 @@ version: "2.0"
 
 nlu:
 
+- synonym: Move task
+  examples: |
+    - mover task
+    - MoveTask
+    - Mover tarea 
+
+- synonym: Go to meeting
+  examples: |
+    - GoToMeeting
+    - go to meeting
+    - ir a meeting
+    - ir a la reunion
+
+- synonym: Crear el kanban
+  examples: |
+    - crear el kanban
+    - hacer un nuevo kanban
+    - crearKanban
+
 # una intencion por cada metodo en las clases que podemos comunicarnos.
 # Nosotros podemos comunicarnos con las clases ExchangeManager y Messenger, cuyos metodos son:
 
-# Messenger:
+
+## Inteciones referidas a los metodos del Messenger
+
 # + send_message(agilebot_id: string, activity_name: string, parameters: Dict)
-# + create_agilebot(agilebot:_id: string, role: string, mode: string)
-# + change_agilebot_role(agilebot_id: string, new_role:string)
-# + change_agilebot_mode(agilebot_id: string, new_mode: string)
-
-# ExchangeManager:
-# + add_exchange(exchange:Exchange):string
-# + remove_exchange(exchange_name:string):string
-# + remove_all_suscribers(exchange_name: string) 
-# + remove_agilebot_from_all(agilebot_id: string) 
-# + remove_agilebot_from_some(agilebot_id: string, exchanges: List<string>) 
-# + add_subscriber(exchange_name:str, agilebot: Agilebot, activity_name:string):string
-# + publish(exchange_name: string, parameters: Dict):string
-
-#ejemplos para el intent send_message:
-- intent: send_message
+- intent: enviar_un_mensaje
   examples: | 
-    - quiero enviar un mensaje a un agilebot
-    - quisiera enviar un mensaje a un agilebot de una actividad
-    - me gustaria enviar una actividad a un agilebot
-    - quisiera comunicar una task a un agilebot 
+    - quiero enviar un mensaje a [gianluca](agilebot)
+    - quisiera enviar un mensaje a [felix](agilebot), con la actividad [Crear](activity)
+    - quiero enviar un mensaje a [franraineri](agilebot), con la actividad [CrearKaban](activity)
 
+
+# + create_agilebot(agilebot:_id: string, role: string, mode: string)
+- intent: crear_un_agilebot
+  examples: | 
+    - quiero crear un nuevo agilebot llamado [franraineri](agilebot) con el rol [developer](role) y el modo [asistente](mode)
+    - creame un agilebot con el id: [emiliano](agilebot), el rol [scrummaster](role), y el modo [representante](mode)
+    - nuevo agile bot llamado [franraineri](agilebot) con el rol [developer](role) y el modo [asistente](mode)
+    - instancia un nuevo agilebot con el nombre [franraineri](agilebot) con el rol [developer](role) y el modo [asistente](mode)
+    - [matias](agilebot) será un nuevo agilebot, con el rol [developer](role) y el modo [asistente](mode)
+
+# + change_agilebot_role(agilebot_id: string, new_role:string)
+- intent: cambiar_rol_agilebot
+  examples: |
+    - quiero cambiar el rol de [gianluca](agilebot) a [developer](role)
+    - cambiame el rol de [franraineri](agilebot) a [developer](role)
+    - el rol de [franraineri](agilebot) cambia a [scrummaster](role)
+    - (felix)[agilebot] cambia a [developer](role)
+    - cambiar el rol de [emiliano](agilebot) a [tester](role)
+
+# + change_agilebot_mode(agilebot_id: string, new_mode: string)
+- intent: cambiar_modo_agilebot
+  examples: |
+    - quiero cambiar el modo de [gianluca](agilebot) a [asistente](mode)
+    - cambiame el modo de [franraineri](agilebot) a [asistente](mode)
+    - el modo de [franraineri](agilebot) cambia a [representante](mode)
+    - (felix)[agilebot] cambia a [asistente](mode)
+    - cambiar el modo de [emiliano](agilebot) a [asistente](mode)
+
+
+# Intenciones referidas a los metodos del ExchangeManager
+# + add_exchange(exchange:string):string
+- intent: agregar_un_exchange
+  examples: |
+    - quiero agregar un exchange llamado [move_to_task](exchange)
+    - agregá el exchange [move_to_task](exchange)
+    - agregar un exchange llamado [move_to_task](exchange)
+    - agrega exchange [move_to_task](exchange)
+  #que hago con algo del tipo exchange ? y con los parametros ?
+
+# + remove_exchange(exchange_name:string):string
+- intent: remover_exchange
+  examples: |
+    - quiero remover el exchange [tasks](exchange)
+    - elimiar exchange [move_to_done](exchange)
+    - remover exchange [move_to_done](exchange)
+    - bajar el exchange [move_to_done](exchange)
+    - remové [move_to_done](exchange)
+    - eliminá [move_to_in_progress](exchange)
+
+# + remove_all_suscribers(exchange_name: string) 
+- intent: remove_all_subscribers
+  examples: |
+    - quiero remover todos los suscriptores del exchange [tasks](exchange)
+    - eliminar cada suscriptor del exchange [move_to_done](exchange)
+    - remover todos los suscriptores del exchange [move_to_done](exchange)
+    - bajar todos los suscriptores del exchange [move_to_done](exchange)
+    - remové los suscriptores del exchange [move_to_in_progress](exchange)
+    - eliminá todos los suscriptores de [move_to_in_progress](exchange) 
+    - sacá los subscriptores del exchange [move_to_in_progress](exchange)
+
+# + remove_agilebot_from_all(agilebot_id: string) 
+- intent: remove_agilebot_from_all
+  examples: |
+    - quiero remover [franraineri](agilebot) de todos los exchanges
+    - eliminarlo a [franraineri](agilebot) de todos los exchanges
+    - remover a [franraineri](agilebot) de todos los exchanges
+    - bajar [gianluca](agilebot) de todos los exchanges
+    - removelo [franraineri](agilebot) de todo exchange 
+    - eliminá a [franraineri](agilebot) de todos los exchanges
+    - sacá a [franraineri](agilebot) de cada exchanges
+    - en ningun exchange debe estar [felix](agilebot)
+    - eliminar a [felix](agilebot) de cada uno de los exchanges
+
+
+
+# + remove_agilebot_from_some(agilebot_id: string, exchanges: List<string>) 
+- intent: remove_agilebot_from_some
+  examples: |
+    - quiero remover [franraineri](agilebot) de los exchanges [tasks](exchange), [move_to_done](exchange) y [move_to_in_progress](exchange)
+    - eliminarlo a [franraineri](agilebot) de los exchanges [tasks](exchange), [move_to_done](exchange) y [move_to_in_progress](exchange)
+    - remover a [franraineri](agilebot) de los exchanges [tasks](exchange), [move_to_done](exchange) y [move_to_in_progress](exchange)
+    - bajar [gianluca](agilebot) de los exchanges [tasks](exchange), [move_to_done](exchange) y [move_to_in_progress](exchange)
+    - removelo [franraineri](agilebot) de los exchanges [tasks](exchange), [move_to_done](exchange) y [move_to_in_progress](exchange)
+    - eliminá a [franraineri](agilebot) de los exchanges [tasks](exchange), [move_to_done](exchange) y [move_to_in_progress](exchange)
+    - sacá a [franraineri](agilebot) de los exchanges [tasks](exchange), [move_to_done](exchange) y [move_to_in_progress](exchange)
+
+# + add_subscriber(exchange_name:str, agilebot: Agilebot, activity_name:string):string
+- intent: add_exchange_subscriber
+  examples: |
+    - subscribir a [franraineri](agilebot) a [move_to_done](exchange) con la actividad [move_to_done](activity)
+    - suscribir a [franraineri](agilebot) a [move_to_done](exchange) con la actividad [move_to_done](activity)
+    - agregar a [felix](agilebot) a [move_to_done](exchange) con la actividad [move_to_done](activity)
+    - sumar a [gianluca](agilebot) a [move_to_done](exchange) con la actividad [move_to_in_progress](activity)
+    - en el exchange [move_to_done](exchange) suscribir a [franraineri](agilebot) con la actividad [move_to_done](activity)
+    - en el exchange [move_to_done](exchange) con la actividad [move_to_done](activity) agregar a [felix](agilebot) 
+
+
+#- story:
+  #- intent: publish_exchange      - "quiero publicar el exchange move_to_task con los agilebot asignados juan y pedro        , y con el did 855"
+                                # - "quiero publicar el exchange move_to_task con los agilebot asignados juan, jose, felipe y pedro, y con el did 855 y el id 255, y con el color azul"
+
+
+
+# + publish(exchange_name: string, parameters: Dict  || List<Subscribers> , n  ):string
+- intent: publish_exchange
+  examples: |     #que hago con los parametros ?
+    - publicar [move_to_done](exchange) con los parametros 
+    - publicá el exchange [move_to_done](exchange) con los parametros 
+    - publicame el exchange [move_to_done](exchange) con los parametros 
+    - quiero publicar el exchange [move_to_done](exchange) con los parametros
+    - agregá el exchange [move_to_done](exchange) con los parametros
+    - agregá [move_to_text](exchange) con ellos subcribers: [matias](agilebot)
+
+
+
+
+## otras intenciones que no van al caso y deveria eliminar
 #se definen ejemplos de la intencion de saludar
-
 - intent: saludar
   examples: |
     - Hola, ¿cómo estás?
@@ -170,3 +292,76 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+
+- lookup: rol
+  examples: |
+    - developer
+    - tester
+    - scrum master
+    - product owner
+    - team leader
+    - tech leader
+    - full stack developer
+    - front end developer
+    - back end developer
+    - QA engineer
+    - QA tester
+    - QA analyst
+
+- lookup: agilebot
+  examples: |
+    - franraineri
+    - gianluca
+    - felipe
+    - felixregert
+    - juan dure
+    - juan ditella
+    - emiescudero
+    - matiasbertelot
+    - tomas
+    - Ale lagar   
+    - matias guerrero
+
+- regex: agilebot
+  examples: |
+    - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
+
+- lookup: modo_agilebot
+  examples: |
+    - asistente
+    - representante
+
+- lookup: artefacto
+  examples: |
+    - task    # recordar definir los sinonimos
+    - pruduct backlog
+    - sprint backlog
+    - product increment       
+
+- lookup: evento
+  examples: |
+    - daily meeting
+    - sprint
+    - sprint review
+    - sprint retrospective
+
+- lookup: activity_name
+  examples: |
+    - GoToMeeting
+    - MoveTask
+    - CrearKanban
+    - AgregarTarea
+    - NotificarNuevaTarea
+    - MoverTareaColumna
+    #faltan actividades, y que hago con los sinonimos? hacen falta ?
+
+- lookup: exchange
+  examples: |
+    - tasks
+    - starts_prints
+    - init_sprint_backlog
+    - move_to_sprint_backlog
+    - move_to_in_progress
+    - move_to_done
+    # faltan exchane names ?

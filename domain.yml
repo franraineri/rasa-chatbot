@@ -12,41 +12,9 @@ intents:
 
 # se definen las entidades que se pueden reconocer en el dialogo
 
-# entidad Modos: asistente, representante
-entities:
-  - entity: modo_agilebot
-    values:
-      - asistente
-      - representante
-
-  - entity: artefacto
-    values:
-      - task    # recordar definir los sinonimos
-      - pruduct backlog
-      - sprint backlog
-      - product increment       
-
-  - entity: evento
-    values:
-      - daily meeting
-      - sprint
-      - sprint review
-      - sprint retrospective
-
-  - entity: rol
-    values:
-      - developer
-      - tester
-      - scrum master
-      - product owner
-      - team leader
-      - tech leader
-      - full stack developer
-      - front end developer
-      - back end developer
-      - QA engineer
-      - QA tester
-      - QA analyst
+  
+slot: nombre_slot
+  type: text
 
 
 session_config:
