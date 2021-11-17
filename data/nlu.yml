@@ -43,6 +43,7 @@ nlu:
     - nuevo agile bot llamado [franraineri](agilebot) con el rol [developer](role) y el modo [asistente](mode)
     - instancia un nuevo agilebot con el nombre [franraineri](agilebot) con el rol [developer](role) y el modo [asistente](mode)
     - [matias](agilebot) será un nuevo agilebot, con el rol [developer](role) y el modo [asistente](mode)
+    - solicito un nuevo agilebot con el nombre [franraineri](agilebot), el rol [developer](role) y el modo [asistente](mode)
 
 # + change_agilebot_role(agilebot_id: string, new_role:string)
 - intent: cambiar_rol_agilebot
@@ -309,6 +310,10 @@ nlu:
     - QA tester
     - QA analyst
 
+- regex: rol
+  examples: |
+    - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
+
 - lookup: agilebot
   examples: |
     - franraineri
@@ -332,6 +337,10 @@ nlu:
     - asistente
     - representante
 
+- regex: modo_agilebot
+  examples: |
+    - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
+
 - lookup: artefacto
   examples: |
     - task    # recordar definir los sinonimos
@@ -339,12 +348,20 @@ nlu:
     - sprint backlog
     - product increment       
 
+- regex: artefacto
+  examples: |
+    - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
+
 - lookup: evento
   examples: |
     - daily meeting
     - sprint
     - sprint review
     - sprint retrospective
+
+- regex: evento
+  examples: |
+    - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
 
 - lookup: activity_name
   examples: |
@@ -356,6 +373,7 @@ nlu:
     - MoverTareaColumna
     #faltan actividades, y que hago con los sinonimos? hacen falta ?
 
+
 - lookup: exchange
   examples: |
     - tasks
@@ -365,3 +383,7 @@ nlu:
     - move_to_in_progress
     - move_to_done
     # faltan exchane names ?
+
+- regex: exchange
+  examples: |
+    - ((([aA-zZ]\w+ *){1,})+(, )*){1,}

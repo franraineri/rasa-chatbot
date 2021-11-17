@@ -12,9 +12,24 @@ intents:
 
 # se definen las entidades que se pueden reconocer en el dialogo
 
-  
-slot: nombre_slot
-  type: text
+slots:
+  nombre_slot:
+    type: text
+  rol:
+    type: text
+  agilebot:
+    type: text
+  modo_agilebot:
+    type: text
+  artefacto:
+    type: text
+  evento:
+    type: text
+  activity_name:
+    type: text
+  exchange:
+    type: text
+
 
 
 session_config:
