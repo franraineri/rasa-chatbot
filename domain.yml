@@ -2,6 +2,22 @@ version: "2.0"
 
 # se definen cada una de las intents presentes en el archivo nlu.yml
 intents:
+  - enviar_un_mensaje
+  - crear_un_agilebot
+  - cambiar_rol_agilebot
+  - cambiar_modo_agilebot
+  - agregar_exchange
+  - remover_un_exchange
+  - remove_all_subscribers
+  - remove_agilebot_from_all
+  - remove_agilebot_from_some
+  - add_exchange_subscriber
+  - publish_exchange
+  - saludar
+  - despedirse
+  - afirmar
+  - negar
+  - desafia_al_bot
   - greet
   - goodbye
   - affirm
@@ -10,7 +26,7 @@ intents:
   - mood_unhappy
   - bot_challenge
 
-# se definen las entidades que se pueden reconocer en el dialogo
+# Se definen los slots de las entidades que se pueden reconocer en el dialogo
 
 slots:
   nombre_slot:
@@ -56,6 +72,10 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_no_understanding:
+  - text: "Sorry, I didn't get that."
+  - text: "Disculpa, pero no entendí, tal vez no puedo entender eso"
 
 
 # actions: #se definen las acciones que se pueden realizar durante un dialogo

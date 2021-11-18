@@ -2,6 +2,7 @@ version: "2.0"
 
 nlu:
 
+## CHEQUEAR si el uso de sinonimos es correcto
 - synonym: Move task
   examples: |
     - mover task
@@ -21,16 +22,17 @@ nlu:
     - hacer un nuevo kanban
     - crearKanban
 
-# una intencion por cada metodo en las clases que podemos comunicarnos.
-# Nosotros podemos comunicarnos con las clases ExchangeManager y Messenger, cuyos metodos son:
+
+# Se define una intencion por cada metodo en las clases que podemos comunicarnos.
+# Nosotros podemos comunicarnos con las clases ExchangeManager y Messenger (a traves de commutator) cuyos metodos son:
 
 
-## Inteciones referidas a los metodos del Messenger
+## Inteciones respectivas a los metodos del Messenger
 
 # + send_message(agilebot_id: string, activity_name: string, parameters: Dict)
 - intent: enviar_un_mensaje
-  examples: | 
-    - quiero enviar un mensaje a [gianluca](agilebot)
+  examples: |  #ver parametros en diccionario
+    - quiero enviar un mensaje a [gianluca](agilebot) 
     - quisiera enviar un mensaje a [felix](agilebot), con la actividad [Crear](activity)
     - quiero enviar un mensaje a [franraineri](agilebot), con la actividad [CrearKaban](activity)
 
@@ -44,6 +46,7 @@ nlu:
     - instancia un nuevo agilebot con el nombre [franraineri](agilebot) con el rol [developer](role) y el modo [asistente](mode)
     - [matias](agilebot) será un nuevo agilebot, con el rol [developer](role) y el modo [asistente](mode)
     - solicito un nuevo agilebot con el nombre [franraineri](agilebot), el rol [developer](role) y el modo [asistente](mode)
+    - [tomas](agilebot) quiero que sea un nuevo agilebot, su rol será [developer](role) y el modo [asistente](mode)
 
 # + change_agilebot_role(agilebot_id: string, new_role:string)
 - intent: cambiar_rol_agilebot
@@ -53,6 +56,7 @@ nlu:
     - el rol de [franraineri](agilebot) cambia a [scrummaster](role)
     - (felix)[agilebot] cambia a [developer](role)
     - cambiar el rol de [emiliano](agilebot) a [tester](role)
+    - cambiar el rol de [franraineri](agilebot) hacia [developer](role)
 
 # + change_agilebot_mode(agilebot_id: string, new_mode: string)
 - intent: cambiar_modo_agilebot
@@ -60,13 +64,15 @@ nlu:
     - quiero cambiar el modo de [gianluca](agilebot) a [asistente](mode)
     - cambiame el modo de [franraineri](agilebot) a [asistente](mode)
     - el modo de [franraineri](agilebot) cambia a [representante](mode)
-    - (felix)[agilebot] cambia a [asistente](mode)
+    - (felix)[agilebot] cambia su modo a [asistente](mode)
+    - [felix][agilebot] cambia a [asistente](mode)
     - cambiar el modo de [emiliano](agilebot) a [asistente](mode)
+    - cambiá el modo de [franraineri](agilebot) hacia [asistente](mode)
 
 
 # Intenciones referidas a los metodos del ExchangeManager
 # + add_exchange(exchange:string):string
-- intent: agregar_un_exchange
+- intent: agregar_exchange
   examples: |
     - quiero agregar un exchange llamado [move_to_task](exchange)
     - agregá el exchange [move_to_task](exchange)
@@ -109,7 +115,6 @@ nlu:
     - eliminar a [felix](agilebot) de cada uno de los exchanges
 
 
-
 # + remove_agilebot_from_some(agilebot_id: string, exchanges: List<string>) 
 - intent: remove_agilebot_from_some
   examples: |
@@ -132,21 +137,18 @@ nlu:
     - en el exchange [move_to_done](exchange) con la actividad [move_to_done](activity) agregar a [felix](agilebot) 
 
 
-#- story:
-  #- intent: publish_exchange      - "quiero publicar el exchange move_to_task con los agilebot asignados juan y pedro        , y con el did 855"
-                                # - "quiero publicar el exchange move_to_task con los agilebot asignados juan, jose, felipe y pedro, y con el did 855 y el id 255, y con el color azul"
-
-
 
 # + publish(exchange_name: string, parameters: Dict  || List<Subscribers> , n  ):string
 - intent: publish_exchange
   examples: |     #que hago con los parametros ?
-    - publicar [move_to_done](exchange) con los parametros 
-    - publicá el exchange [move_to_done](exchange) con los parametros 
-    - publicame el exchange [move_to_done](exchange) con los parametros 
-    - quiero publicar el exchange [move_to_done](exchange) con los parametros
-    - agregá el exchange [move_to_done](exchange) con los parametros
-    - agregá [move_to_text](exchange) con ellos subcribers: [matias](agilebot)
+    - publicar [move_to_done](exchange) a el agilebot [franraineri](agilebot) 
+    - publicá el exchange [move_to_sprint_backlog](exchange) con [francisco, y jose](agilebot)
+    - publicame el exchange [start_sprint](exchange) con el agile bot [franraineri](agilebot) 
+    - quiero publicar el exchange [move_to_done](exchange) con los subscriptores [juan, pedro, jose, felipe, gianluca, y felix]
+    - agregá el exchange [move_to_done](exchange) con los subscriptores [juan, pedro, jose, felipe, gianluca, y felix]
+    - agregá [move_to_in_progress](exchange) con ellos subcribers: [matias escudero, y matias bertelot](agilebot)
+    - agregá [move_to_done](exchange) con ellos subcribers: [matias bertelot , jose , emiliano escudero](agilebot)
+    - publicar [move_to_done](exchange) con estos subcribers: [matias bertelot , jose , emiliano escudero](agilebot)
 
 
 
@@ -192,7 +194,7 @@ nlu:
     - para nada
 
 #se definen ejemplos en los que se pregunta si es un bot
-- intent: defia_al_bot
+- intent: desafia_al_bot
   examples: |
     - ¿Es un bot?
     - ¿Es una persona?
@@ -202,23 +204,6 @@ nlu:
     - estoy hablando con un bot ?
     - estoy hablando con una persona ?  
 
-
-## A partir de aca son ejemplos predefinidos en ingles. Habria que quitarlos ?
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
 
 - intent: goodbye
   examples: |
@@ -238,54 +223,11 @@ nlu:
   examples: |
     - yes
     - y
+    - si
     - indeed
     - of course
     - that sounds good
     - correct
-
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
 
 - intent: bot_challenge
   examples: |
@@ -294,6 +236,8 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
+
+## Se definen las lookups utilizadas en las intenciones ##
 
 - lookup: rol
   examples: |
@@ -327,6 +271,12 @@ nlu:
     - tomas
     - Ale lagar   
     - matias guerrero
+    - jose lopez
+    - Marcelo Campo
+    - pedro_procopio
+    - juan_perez
+    - juan_dure_faccino
+    - juan_ditella
 
 - regex: agilebot
   examples: |
@@ -358,6 +308,8 @@ nlu:
     - sprint
     - sprint review
     - sprint retrospective
+    - meeting
+    - reunion
 
 - regex: evento
   examples: |
@@ -376,14 +328,71 @@ nlu:
 
 - lookup: exchange
   examples: |
-    - tasks
+    - create_tasks
+    - create_meeting
+    - init_meeting
     - starts_prints
     - init_sprint_backlog
     - move_to_sprint_backlog
     - move_to_in_progress
     - move_to_done
+    - move_to_accepted
+    - move_to_rejected
     # faltan exchane names ?
 
 - regex: exchange
   examples: |
     - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
+
+
+# lookup para los diccionarios de parametros en los metodos 
+- lookup: parameters
+  examples: |
+    - { columns: [to_do, in_progress, testing, done] , 
+        roles: [developer, tester, scrum master, product owner, team leader, tech leader, full stack developer, front end developer, back end developer, QA engineer, QA tester, QA analyst] 
+        kanban_id: 234,
+        sprint_id: 235,
+        sleep: 5}
+    - { artifact: tasks,
+        task: create_repository, 
+        event: daily meeting, 
+        sleep: 10}
+    - { artifact: sprint backlog,
+        task: organize_meeting, 
+        event: daily meeting, 
+        sleep: 10}
+    - { kanban_name: "proyecto refactory"}
+    - { "artifact": tasks,
+        "task_id": 896, 
+        "movement": move_to_testing, 
+        sleep: 10}
+    - { artifact: tasks,
+        task_id: 896, 
+        movement: to done, 
+        sleep: 10}
+
+# se definen la regex correspondientes para los diccionarios de parametros
+- regex: parameters
+  examples: |
+    - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
+  
+  # {("?[a-z]"?:"?[a-z]"?)\w+}
+
+
+
+### EJEMPLOS DE USO DE PARAMETROS ###
+
+#  create_kanban
+# parameters["columns"]:
+# answer["creado"] = parameters["kanban_id"]
+# time.sleep(parameters["sleep"])
+
+#   agregar tarea
+# parameters["artifact"], parameters["task"]
+
+#   notificar nueva tarea
+# parameters["kanban_name"]
+
+#  mover tarea columna
+# parameters["artifact"], parameters["movement"]
+# parameters["movement"]["task_id"]
