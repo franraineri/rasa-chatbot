@@ -12,7 +12,13 @@ Todos las entidades tienen que estar participando aca, siendo importante no repe
 + Una intencion por cada metodo  en las clases que podemos comunicarnos.
  Nosotros podemos comunicarnos con las clases ExchangeManager y Messenger, cuyos metodos son:
 
-4. Implementar las acciones que generaran las requests para interactuar con el mundo sintetico. Estas deben responder los parametros que se procesan en el dispatcher (ver cuales) que seran devueltos al commutator si es un mensaje/evento, y  se debe enviar al componente correspondiente, la ejecucion con los parametros obtenidos, deben estar todos, si no informar error, en caso de ser evento, luego de disparado retornar ok, y en caso de ser mensaje debe esperarse la respuesta.
+4. Implementar las acciones que generaran las *requests* (averiguar que es un request) para interactuar con el mundo sintetico.
+Estas request deben responder los parametros que se procesan en el dispatcher (ver cuales son esos parametros correspondientes a los metodos) y seran devueltos al commutator si es un mensaje u evento. 
+
+ENTONCES ==> ver que es un request, que hace el commutator, que espera el commutator, y lo que sigue en el texto debajo
+
+Por ultimo se debe enviar al componente correspondiente la ejecucion con los parametros obtenidos, debiendo estar todos estos ultimos, y si no se debe informar un error.
+En caso de ser evento luego de ser disparado retornar ok, y en caso de ser mensaje debe esperarse la respuesta.
 
 Este ultimo punto hace ref que si viene un mensaje "quiero crear al agilebot franco con el rol scrumm y modo asistente" en la custom action hay que filtrar la data importante, el metodo, crear agilebot. los aprametros rol, modo y nombre/id y eso vuelve al commutator para que lo ejecute
 
@@ -79,3 +85,14 @@ Es un hecho que los mensajes que los usuarios envían a su asistente contendrán
 
 
 instalar pyenv
+
+buscar como hacer en el commutator hacer un request http a rasa desde python
+
+
+
+en las acciones:
+disspacher: 
+
+commutator requiere mensajes
+
+request.post.rasa
