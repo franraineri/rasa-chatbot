@@ -373,16 +373,14 @@ nlu:
         sleep: 10}
 
 # se definen la regex correspondientes para los diccionarios de parametros
-- regex: parameters
-  examples: |
-    - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
+# - regex: parameters
+#   examples: |
+#     - {("([aA-zZ]\w+)*":("[aA-zZ]\w* *")|(\[ *(" *[aA-zZ]\w*")*(, *("[aA-zZ]\w*"))*\]) *,? *)* 
+#    # - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
+#     - {("[aA-zZ]":)? ("[aA-zZ]"\w+ *" *)}
   
-  # {("[aA-zZ]":)? "[aA-zZ]" )\w+}
-    - {("([aA-zZ]\w+)*":("[aA-zZ]\w* *")|(\[ *(" *[aA-zZ]\w*") *(, *("[aA-zZ]\w*"))*\]) *(( *, *) *(" *([aA-zZ]\w+ *)*":("[aA-zZ]\w*")|(\[("[aA-zZ]\w*")( *, *)("[aA-zZ]\w*")+)\]) *)*)+}
+  # omitir esta linea:  # *(( *, *) *(" *([aA-zZ]\w+ *)*":("[aA-zZ]\w*")|(\[("[aA-zZ]\w*")( *, *)("[aA-zZ]\w*")+)\]) *)*)+}
 
-- regex:
-  examples: |
-    - columnas
 
 ### EJEMPLOS DE USO DE PARAMETROS ###
 

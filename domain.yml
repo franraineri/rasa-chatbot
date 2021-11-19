@@ -26,12 +26,7 @@ intents:
   - mood_unhappy
   - bot_challenge
 
-<<<<<<< HEAD
 # Se definen los slots de las entidades que se pueden reconocer en el dialogo
-=======
-
-# se definen las entidades que se pueden reconocer en el dialogo
->>>>>>> 6121acc5d9567a76f13b0bf784883b323af63206
 
 slots:
   nombre_slot:
@@ -54,6 +49,14 @@ slots:
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+entities: 
+  - evento
+  - artefacto
+  - activity_name 
+  - modo_agilebot
+  - agilebot
+  - rol
 
 # se definen cada una de las respuestas que se le pueden dar a las intents
 responses:
