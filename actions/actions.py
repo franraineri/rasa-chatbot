@@ -33,7 +33,7 @@ class action_send_message(Action):
 class action_create_agilebot(Action):
 
     def name(self):
-        return "action_crete_agilebot"
+        return "action_create_agilebot"
 
     def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
         dispatcher.utter_message("[INFO] creando agilebot")     # hay dos trackers distintos. from rasa_sdk import Action, Tracker
@@ -43,7 +43,7 @@ class action_create_agilebot(Action):
         mode = tracker.slots.get("mode")
 
         json_datos = {"agilebotId":  str(agilebot), "role": str(rol), "mode": str(mode)}
-        requests.post(url="http://"+ str(addresses.FLASK_HOST)  + ":" + str(addresses.FLASK_PORT) + "/dispatcher/create-agilebot", json=json_datos)
+        print(requests.post(url="http://"+ str(addresses.FLASK_HOST)  + ":" + str(addresses.FLASK_PORT) + "/dispatcher/create-agilebot", json=json_datos))
 
         return []
 
@@ -71,8 +71,8 @@ class action_change_agilebot_mode(Action):
         dispatcher.utter_message("[INFO] cambiando modo de agilebot")     # hay dos trackers distintos. from rasa_sdk import Action, Tracker
       
         agilebot = tracker.slots.get("agilebot")
-        rol = tracker.slots.get("role")  
-        json_datos = {"agilebotId": str(agilebot), "role": str(rol)}
+        mode = tracker.slots.get("mode")  
+        json_datos = {"agilebotId": str(agilebot), "role": str(mode)}
         requests.post(url="http://"+ str(addresses.FLASK_HOST)  + ":" + str(addresses.FLASK_PORT) + "/dispatcher/change-agilebot-mode", json=json_datos)        
         return []
 
@@ -160,7 +160,6 @@ class action_add_exchange_subscriber(Action):
     def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
         dispatcher.utter_message("[INFO] Agregando subscriptores haci") 
         
-        
         nombre = tracker.slots.get("agilebot") 
         activity = tracker.slots.get("activity")
         exchanges = tracker.slots.get("exchange") 
@@ -170,3 +169,27 @@ class action_add_exchange_subscriber(Action):
 
         return[]
 
+class action_publish_exchange(Action):
+    
+    def name(self):
+        return "action_publish_exchange"
+    
+    def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
+        dispatcher.utter_message("[INFO] ") 
+        
+        nombre = tracker.slots.get("agilebot") 
+        activity = tracker.slots.get("activity")
+        exchanges = tracker.slots.get("exchange") 
+
+        #json_datos = {"agilebotId": str(nombre), "exchange": exchanges}
+        #requests.post(url="http://"+ str(addresses.FLASK_HOST)  + ":" + str(addresses.FLASK_PORT) + "/dispatcher/create-exchange", json=json_datos)        
+
+        return[]
+
+"""
++ publish(exchange_name: string, parameters: Dict  || List<Subscribers> , n  ):string
+- intent: publish_exchange
+  examples: |     #que hago con los parametros ?
+    - publicar [move_to_done](exchange) con los parametros 
+    - publicá el exchange [move_to_done](exchange) con los parametros 
+"""

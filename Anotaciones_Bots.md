@@ -96,3 +96,6 @@ disspacher:
 commutator requiere mensajes
 
 request.post.rasa
+
+
+Las ultimas 4 acciones no tienen metodo en el dispatcher 

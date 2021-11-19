@@ -2,6 +2,22 @@ version: "2.0"
 
 # se definen cada una de las intents presentes en el archivo nlu.yml
 intents:
+  - enviar_un_mensaje
+  - crear_un_agilebot
+  - cambiar_rol_agilebot
+  - cambiar_modo_agilebot
+  - agregar_exchange
+  - remover_un_exchange
+  - remove_all_subscribers
+  - remove_agilebot_from_all
+  - remove_agilebot_from_some
+  - add_exchange_subscriber
+  - publish_exchange
+  - saludar
+  - despedirse
+  - afirmar
+  - negar
+  - desafia_al_bot
   - greet
   - goodbye
   - affirm
@@ -9,6 +25,7 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+
 
 # se definen las entidades que se pueden reconocer en el dialogo
 
@@ -61,7 +78,7 @@ actions:
   - action_create_agilebot
   - action_change_agilebot_role
   - action_change_agilebot_mode
-  - action_add_exchange
+  - action_create_exchange
   - action_remove_exchange
   - action_all_suscribers
   - action_remove_agilebot_from_all

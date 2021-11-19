@@ -371,7 +371,7 @@ nlu:
     - AgregarTarea
     - NotificarNuevaTarea
     - MoverTareaColumna
-    #faltan actividades, y que hago con los sinonimos? hacen falta ?
+#faltan actividades, y que hago con los sinonimos? hacen falta ?
 
 
 - lookup: exchange
@@ -382,7 +382,7 @@ nlu:
     - move_to_sprint_backlog
     - move_to_in_progress
     - move_to_done
-    # faltan exchane names ?
+# faltan exchane names ?
 
 - regex: exchange
   examples: |
