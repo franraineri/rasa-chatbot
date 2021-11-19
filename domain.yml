@@ -30,8 +30,6 @@ slots:
   exchange:
     type: text
 
-
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -58,4 +56,14 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
 
-# actions: #se definen las acciones que se pueden realizar durante un dialogo
+actions:
+  - action_send_message
+  - action_create_agilebot
+  - action_change_agilebot_role
+  - action_change_agilebot_mode
+  - action_add_exchange
+  - action_remove_exchange
+  - action_all_suscribers
+  - action_remove_agilebot_from_all
+  - action_remove_agilebot_from_some
+  - action_add_subscriber
