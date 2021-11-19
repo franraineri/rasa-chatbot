@@ -56,7 +56,7 @@ entities:
   - activity_name 
   - modo_agilebot
   - agilebot
-  - rol
+  - role
 
 # se definen cada una de las respuestas que se le pueden dar a las intents
 responses:
