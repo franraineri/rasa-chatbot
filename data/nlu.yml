@@ -29,7 +29,7 @@ nlu:
 
 ## Inteciones respectivas a los metodos del Messenger
 
-# + send_message(agilebot_id: string, activity_name: string, parameters: Dict)
+# + send_message(agilebot_id: string, activity_name: string, parameters: Dict) 
 - intent: enviar_un_mensaje
   examples: |  #ver parametros en diccionario
     - quiero enviar un mensaje a [gianluca](agilebot) 
@@ -90,7 +90,7 @@ nlu:
     - remové [move_to_done](exchange)
     - eliminá [move_to_in_progress](exchange)
 
-# + remove_all_suscribers(exchange_name: string) 
+# + remove_all_suscribers(exchange_name: string) #No esta definido en el dispacher
 - intent:   
   examples: |
     - quiero remover todos los suscriptores del exchange [tasks](exchange)
@@ -101,7 +101,7 @@ nlu:
     - eliminá todos los suscriptores de [move_to_in_progress](exchange) 
     - sacá los subscriptores del exchange [move_to_in_progress](exchange)
 
-# + remove_agilebot_from_all(agilebot_id: string) 
+# + remove_agilebot_from_all(agilebot_id: string) # No esta en definido en el dispacher
 - intent: remove_agilebot_from_all
   examples: |
     - quiero remover [franraineri](agilebot) de todos los exchanges
@@ -138,10 +138,10 @@ nlu:
 
 
 
-# + publish(exchange_name: string, parameters: Dict  || List<Subscribers> , n  ):string
+# + publish(exchange_name: string, parameters: Dict)):string    ===>    List<Subscribers>  {'subscribers': List<Agilebot>, 'activity': Activity}
 - intent: publish_exchange
   examples: |     #que hago con los parametros ?
-    - publicar [move_to_done](exchange) a el agilebot [franraineri](agilebot) 
+    - publicar [move_to_done](exchange) con los subscriptores: [franraineri, gianluca, juan ditella](agilebot) y la actividad [create_repository](activity)
     - publicá el exchange [move_to_sprint_backlog](exchange) con [francisco, y jose](agilebot)
     - publicame el exchange [start_sprint](exchange) con el agile bot [franraineri](agilebot) 
     - quiero publicar el exchange [move_to_done](exchange) con los subscriptores [juan, pedro, jose, felipe, gianluca, y felix]
@@ -271,7 +271,7 @@ nlu:
     - tomas
     - Ale lagar   
     - matias guerrero
-    - jose lopez
+    - jose lopez, martin
     - Marcelo Campo
     - pedro_procopio
     - juan_perez
@@ -348,11 +348,11 @@ nlu:
 # lookup para los diccionarios de parametros en los metodos 
 - lookup: parameters
   examples: |
-    - { columns: [to_do, in_progress, testing, done] , 
+    - columns: [to_do, in_progress, testing, done] , 
         roles: [developer, tester, scrum master, product owner, team leader, tech leader, full stack developer, front end developer, back end developer, QA engineer, QA tester, QA analyst] 
         kanban_id: 234,
         sprint_id: 235,
-        sleep: 5}
+        sleep: 5
     - { artifact: tasks,
         task: create_repository, 
         event: daily meeting, 
@@ -377,12 +377,15 @@ nlu:
     - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
   
   # {("[aA-zZ]":)? "[aA-zZ]" )\w+}
-    - {(" *([aA-zZ]\w+ *)*":("[aA-zZ]\w* *")|(\[ *(" *[aA-zZ]\w*") *(, *("[aA-zZ]\w*"))*\]) *(( *, *) *(" *([aA-zZ]\w+ *)*":("[aA-zZ]\w*")|(\[("[aA-zZ]\w*")( *, *)("[aA-zZ]\w*")+)\]) *)*)+}
+    - {("([aA-zZ]\w+)*":("[aA-zZ]\w* *")|(\[ *(" *[aA-zZ]\w*") *(, *("[aA-zZ]\w*"))*\]) *(( *, *) *(" *([aA-zZ]\w+ *)*":("[aA-zZ]\w*")|(\[("[aA-zZ]\w*")( *, *)("[aA-zZ]\w*")+)\]) *)*)+}
 
-
+- regex:
+  examples: |
+    - columnas
+    
 ### EJEMPLOS DE USO DE PARAMETROS ###
 
-#  create_kanban
+# ACTIVIDAD: create_kanban  { "columns" : "to-do, in progress" }
 # parameters["columns"]:
 # answer["creado"] = parameters["kanban_id"]
 # time.sleep(parameters["sleep"])
