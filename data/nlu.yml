@@ -37,37 +37,37 @@ nlu:
     - quiero enviar un mensaje a [franraineri](agilebot), con la actividad [CrearKaban](activity)
 
 
-# + create_agilebot(agilebot:_id: string, role: string, mode: string)
+# + create_agilebot(agilebot:_id: string, rol: string, modo_agilebot: string)
 - intent: crear_un_agilebot
   examples: | 
-    - quiero crear un nuevo agilebot llamado [franraineri](agilebot) con el rol [developer](role) y el modo [asistente](mode)
-    - creame un agilebot con el id: [emiliano](agilebot), el rol [scrummaster](role), y el modo [representante](mode)
-    - nuevo agile bot llamado [franraineri](agilebot) con el rol [developer](role) y el modo [asistente](mode)
-    - instancia un nuevo agilebot con el nombre [franraineri](agilebot) con el rol [developer](role) y el modo [asistente](mode)
-    - [matias](agilebot) será un nuevo agilebot, con el rol [developer](role) y el modo [asistente](mode)
-    - solicito un nuevo agilebot con el nombre [franraineri](agilebot), el rol [developer](role) y el modo [asistente](mode)
-    - [tomas](agilebot) quiero que sea un nuevo agilebot, su rol será [developer](role) y el modo [asistente](mode)
+    - quiero crear un nuevo agilebot llamado [franraineri](agilebot) con el rol [developer](rol) y el modo [asistente](modo_agilebot)
+    - creame un agilebot con el id: [emiliano](agilebot), el rol [scrummaster](rol), y el modo [representante](modo_agilebot)
+    - nuevo agile bot llamado [franraineri](agilebot) con el rol [developer](rol) y el modo [asistente](modo_agilebot)
+    - instancia un nuevo agilebot con el nombre [franraineri](agilebot) con el rol [developer](rol) y el modo [asistente](modo_agilebot)
+    - [matias](agilebot) será un nuevo agilebot, con el rol [developer](rol) y el modo [asistente](modo_agilebot)
+    - solicito un nuevo agilebot con el nombre [franraineri](agilebot), el rol [developer](rol) y el modo [asistente](modo_agilebot)
+    - [tomas](agilebot) quiero que sea un nuevo agilebot, su rol será [developer](rol) y el modo [asistente](modo_agilebot)
 
 # + change_agilebot_role(agilebot_id: string, new_role:string)
 - intent: cambiar_rol_agilebot
   examples: |
-    - quiero cambiar el rol de [gianluca](agilebot) a [developer](role)
-    - cambiame el rol de [franraineri](agilebot) a [developer](role)
-    - el rol de [franraineri](agilebot) cambia a [scrummaster](role)
-    - (felix)[agilebot] cambia a [developer](role)
-    - cambiar el rol de [emiliano](agilebot) a [tester](role)
-    - cambiar el rol de [franraineri](agilebot) hacia [developer](role)
+    - quiero cambiar el rol de [gianluca](agilebot) a [developer](rol)
+    - cambiame el rol de [franraineri](agilebot) a [developer](rol)
+    - el rol de [franraineri](agilebot) cambia a [scrummaster](rol)
+    - (felix)[agilebot] cambia a [developer](rol)
+    - cambiar el rol de [emiliano](agilebot) a [tester](rol)
+    - cambiar el rol de [franraineri](agilebot) hacia [developer](rol)
 
 # + change_agilebot_mode(agilebot_id: string, new_mode: string)
 - intent: cambiar_modo_agilebot
   examples: |
-    - quiero cambiar el modo de [gianluca](agilebot) a [asistente](mode)
-    - cambiame el modo de [franraineri](agilebot) a [asistente](mode)
-    - el modo de [franraineri](agilebot) cambia a [representante](mode)
-    - (felix)[agilebot] cambia su modo a [asistente](mode)
-    - [felix][agilebot] cambia a [asistente](mode)
-    - cambiar el modo de [emiliano](agilebot) a [asistente](mode)
-    - cambiá el modo de [franraineri](agilebot) hacia [asistente](mode)
+    - quiero cambiar el modo de [gianluca](agilebot) a [asistente](modo_agilebot)
+    - cambiame el modo de [franraineri](agilebot) a [asistente](modo_agilebot)
+    - el modo de [franraineri](agilebot) cambia a [representante](modo_agilebot)
+    - (felix)[agilebot] cambia su modo a [asistente](modo_agilebot)
+    - [felix][agilebot] cambia a [asistente](modo_agilebot)
+    - cambiar el modo de [emiliano](agilebot) a [asistente](modo_agilebot)
+    - cambiá el modo de [franraineri](agilebot) hacia [asistente](modo_agilebot)
 
 
 # Intenciones referidas a los metodos del ExchangeManager
