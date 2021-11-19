@@ -12,11 +12,41 @@ rules:
 #   - intent: bot_challenge
 #   - action: utter_iamabot
 
-- rule: crear un agilebot solicitado
+- rule: enviar un mensaje
+  steps:
+  - intent: enviar_un_mensaje
+  - action: action_send_message
+
+- rule: crear un agilebot
   steps:
   - intent: crear_un_agilebot
-  - action: action_crear_agilebot
-  ## le tengo que volver a pedir al user ?
+  - action: action_create_agilebot
+
+- rule: cambiar rol de un agilebot
+  steps:
+  - intent: cambiar_rol_agilebot
+  - action: action_change_agilebot_role
+
+- rule: cambiar modo de un agilebot
+  steps:
+  - intent: cambiar_modo_agilebot
+  - action: action_change_agilebot_mode
+
+- rule: crear y agregar un exchange
+  steps:
+  - intent: agregar_exchange
+  - action: action_create_exchange
+
+- rule: eliminar un exchange
+  steps:
+  - intent: remover_un_exchange
+  - action: action_remove_exchange
+
+- rule: eliminar todos los subscriptores
+  steps:
+  - intent: remove_all_subscribers
+  - action: action_all_suscribers
+
 
   
 

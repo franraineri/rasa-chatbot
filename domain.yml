@@ -26,7 +26,12 @@ intents:
   - mood_unhappy
   - bot_challenge
 
+<<<<<<< HEAD
 # Se definen los slots de las entidades que se pueden reconocer en el dialogo
+=======
+
+# se definen las entidades que se pueden reconocer en el dialogo
+>>>>>>> 6121acc5d9567a76f13b0bf784883b323af63206
 
 slots:
   nombre_slot:
@@ -80,7 +85,7 @@ actions:
   - action_create_agilebot
   - action_change_agilebot_role
   - action_change_agilebot_mode
-  - action_add_exchange
+  - action_create_exchange
   - action_remove_exchange
   - action_all_suscribers
   - action_remove_agilebot_from_all
