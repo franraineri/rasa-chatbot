@@ -91,7 +91,7 @@ nlu:
     - eliminá [move_to_in_progress](exchange)
 
 # + remove_all_suscribers(exchange_name: string) 
-- intent: remove_all_subscribers
+- intent:   
   examples: |
     - quiero remover todos los suscriptores del exchange [tasks](exchange)
     - eliminar cada suscriptor del exchange [move_to_done](exchange)
@@ -376,8 +376,8 @@ nlu:
   examples: |
     - ((([aA-zZ]\w+ *){1,})+(, )*){1,}
   
-  # {("?[a-z]"?:"?[a-z]"?)\w+}
-
+  # {("[aA-zZ]":)? "[aA-zZ]" )\w+}
+    - {(" *([aA-zZ]\w+ *)*":("[aA-zZ]\w* *")|(\[ *(" *[aA-zZ]\w*") *(, *("[aA-zZ]\w*"))*\]) *(( *, *) *(" *([aA-zZ]\w+ *)*":("[aA-zZ]\w*")|(\[("[aA-zZ]\w*")( *, *)("[aA-zZ]\w*")+)\]) *)*)+}
 
 
 ### EJEMPLOS DE USO DE PARAMETROS ###

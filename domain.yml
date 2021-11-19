@@ -47,7 +47,6 @@ slots:
     type: text
 
 
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -78,4 +77,3 @@ responses:
   - text: "Disculpa, pero no entendí, tal vez no puedo entender eso"
 
 
-# actions: #se definen las acciones que se pueden realizar durante un dialogo
