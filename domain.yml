@@ -109,3 +109,5 @@ actions:
   - action_post_event
   - action_remove_agilebot_from_all 
   - action_remove_agilebot_from_some
+  - action_remove_all_subscribers
+  - action_add_exchange_subscriber

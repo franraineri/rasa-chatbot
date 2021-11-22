@@ -77,10 +77,8 @@ class action_create_exchange(Action):
         return "action_create_exchange"
     
     def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
-
         exchange = tracker.slots.get("exchange")
         intent = tracker.latest_message['intent'].get('name')
-            
         dispatcher.utter_message(intent+"®"+ exchange)     
         return []
 
@@ -96,21 +94,21 @@ class action_remove_exchange(Action):
         dispatcher.utter_message(intent+"®"+ exchange)     
         return []
 
-class action_post_event(Action):
+# class action_post_event(Action):
     
-    def name(self):
-        return "action_post_event"
+#     def name(self):
+#         return "action_post_event"
     
-    def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
-        dispatcher.utter_message("[INFO] Posteando un evento") 
+#     def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
+#         dispatcher.utter_message("[INFO] Posteando un evento") 
     
-        parameters = tracker.slots.get("activity")
-        exchanges = tracker.slots.get("parametro") 
+#         parameters = tracker.slots.get("activity")
+#         exchanges = tracker.slots.get("parametro") 
 
-        json_datos = {"exchange": exchanges; "parameters": parameters}
-        requests.post(url="http://"+ LOCALHOST  + ":" + str(addresses.FLASK_PORT) + "/dispatcher/post-event", json=json_datos)        
+#         json_datos = {"exchange": exchanges; "parameters": parameters}
+#         requests.post(url="http://"+ LOCALHOST  + ":" + str(addresses.FLASK_PORT) + "/dispatcher/post-event", json=json_datos)        
 
-        return[]
+#         return[]
 
 class action_change_callback(Action):
         
@@ -168,8 +166,8 @@ class action_add_exchange_subscriber(Action):
 
 class action_remove_all_subscribers(Action):
 
-     def name(self):
-            return "action_remove_all_subscribers"
+    def name(self):
+        return "action_remove_all_subscribers"
     
     def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
         exchange = tracker.slots.get("exchange")
