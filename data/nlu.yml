@@ -32,9 +32,9 @@ nlu:
 # + send_message(agilebot_id: string, activity_name: string, parameters: Dict) 
 - intent: enviar_un_mensaje
   examples: |  #ver parametros en diccionario
-    - quiero enviar un mensaje a [gianluca](agilebot) 
-    - quisiera enviar un mensaje a [felix](agilebot), con la actividad [Crear](activity)
-    - quiero enviar un mensaje a [franraineri](agilebot), con la actividad [CrearKaban](activity)
+    - quiero enviar un mensaje a [gianluca](agilebot), con el metodo [crear](activity) y el parametro [param](parametro)
+    - quisiera enviar un mensaje a [felix](agilebot), con la actividad [Crear](activity) y el parametro [param](parametro)
+    - quiero enviar un mensaje a [franraineri](agilebot), con la actividad [CrearKaban](activity) y el parametro [param](parametro)
 
 
 # + create_agilebot(agilebot:_id: string, rol: string, modo_agilebot: string)
@@ -90,8 +90,17 @@ nlu:
     - remové [move_to_done](exchange)
     - eliminá [move_to_in_progress](exchange)
 
-# + remove_all_suscribers(exchange_name: string) #No esta definido en el dispacher
-- intent:   
+# + add_subscriber(exchange_name:str, agilebot: Agilebot, activity_name:string):string
+- intent: add_exchange_subscriber
+  examples: |
+    - subscribir a [franraineri](agilebot) a [move_to_done](exchange) con la actividad [move_to_done](activity)
+    - suscribir a [franraineri](agilebot) a [move_to_done](exchange) con la actividad [move_to_done](activity)
+    - agregar a [felix](agilebot) a [move_to_done](exchange) con la actividad [move_to_done](activity)
+    - sumar a [gianluca](agilebot) a [move_to_done](exchange) con la actividad [move_to_in_progress](activity)
+    - en el exchange [move_to_done](exchange) suscribir a [franraineri](agilebot) con la actividad [move_to_done](activity)
+    - en el exchange [move_to_done](exchange) con la actividad [move_to_done](activity) agregar a [felix](agilebot) 
+
+- intent: remove_all_subscribers
   examples: |
     - quiero remover todos los suscriptores del exchange [tasks](exchange)
     - eliminar cada suscriptor del exchange [move_to_done](exchange)
@@ -101,8 +110,27 @@ nlu:
     - eliminá todos los suscriptores de [move_to_in_progress](exchange) 
     - sacá los subscriptores del exchange [move_to_in_progress](exchange)
 
-# + remove_agilebot_from_all(agilebot_id: string) # No esta en definido en el dispacher
-- intent: remove_agilebot_from_all
+
+# + publish(exchange_name: string, parameters: Dict)):string    ===>    List<Subscribers>  {'subscribers': List<Agilebot>, 'activity': Activity}
+- intent: post_event
+  examples: |     #que hago con los parametros ?
+    - publicar [move_to_done](exchange) con los subscriptores: [franraineri, gianluca, juan ditella](agilebot) y la actividad [create_repository](activity)
+    - publicá el exchange [move_to_sprint_backlog](exchange) con [francisco, y jose](agilebot)
+    - publicame el exchange [start_sprint](exchange) con el agile bot [franraineri](agilebot) 
+    - quiero publicar el exchange [move_to_done](exchange) con los subscriptores [juan, pedro, jose, felipe, gianluca, y felix]
+    - agregá el exchange [move_to_done](exchange) con los subscriptores [juan, pedro, jose, felipe, gianluca, y felix]
+    - agregá [move_to_in_progress](exchange) con ellos subcribers: [matias escudero, y matias bertelot](agilebot)
+    - agregá [move_to_done](exchange) con ellos subcribers: [matias bertelot , jose , emiliano escudero](agilebot)
+    - publicar [move_to_done](exchange) con estos subcribers: [matias bertelot , jose , emiliano escudero](agilebot)
+
+- intent: change_callback
+  examples: |
+    - quiero cambiar al agilebot [gianluca](agilebot), con el metodo [metodo](metodo) hacia el callback [exchange](exchange)
+    - cambiame al agilebot [gianluca](agilebot), con el metodo [metodo](metodo) hacia el callback [exchange](exchange)
+    - move al agilebot [gianluca](agilebot), con el metodo [metodo](metodo) hacia el callback [exchange](exchange)
+
+
+- intent: remove_agilebot_from_all 
   examples: |
     - quiero remover [franraineri](agilebot) de todos los exchanges
     - eliminarlo a [franraineri](agilebot) de todos los exchanges
@@ -114,7 +142,6 @@ nlu:
     - en ningun exchange debe estar [felix](agilebot)
     - eliminar a [felix](agilebot) de cada uno de los exchanges
 
-
 # + remove_agilebot_from_some(agilebot_id: string, exchanges: List<string>) 
 - intent: remove_agilebot_from_some
   examples: |
@@ -125,33 +152,6 @@ nlu:
     - removelo [franraineri](agilebot) de los exchanges [tasks](exchange), [move_to_done](exchange) y [move_to_in_progress](exchange)
     - eliminá a [franraineri](agilebot) de los exchanges [tasks](exchange), [move_to_done](exchange) y [move_to_in_progress](exchange)
     - sacá a [franraineri](agilebot) de los exchanges [tasks](exchange), [move_to_done](exchange) y [move_to_in_progress](exchange)
-
-# + add_subscriber(exchange_name:str, agilebot: Agilebot, activity_name:string):string
-- intent: add_exchange_subscriber
-  examples: |
-    - subscribir a [franraineri](agilebot) a [move_to_done](exchange) con la actividad [move_to_done](activity)
-    - suscribir a [franraineri](agilebot) a [move_to_done](exchange) con la actividad [move_to_done](activity)
-    - agregar a [felix](agilebot) a [move_to_done](exchange) con la actividad [move_to_done](activity)
-    - sumar a [gianluca](agilebot) a [move_to_done](exchange) con la actividad [move_to_in_progress](activity)
-    - en el exchange [move_to_done](exchange) suscribir a [franraineri](agilebot) con la actividad [move_to_done](activity)
-    - en el exchange [move_to_done](exchange) con la actividad [move_to_done](activity) agregar a [felix](agilebot) 
-
-
-
-# + publish(exchange_name: string, parameters: Dict)):string    ===>    List<Subscribers>  {'subscribers': List<Agilebot>, 'activity': Activity}
-- intent: publish_exchange
-  examples: |     #que hago con los parametros ?
-    - publicar [move_to_done](exchange) con los subscriptores: [franraineri, gianluca, juan ditella](agilebot) y la actividad [create_repository](activity)
-    - publicá el exchange [move_to_sprint_backlog](exchange) con [francisco, y jose](agilebot)
-    - publicame el exchange [start_sprint](exchange) con el agile bot [franraineri](agilebot) 
-    - quiero publicar el exchange [move_to_done](exchange) con los subscriptores [juan, pedro, jose, felipe, gianluca, y felix]
-    - agregá el exchange [move_to_done](exchange) con los subscriptores [juan, pedro, jose, felipe, gianluca, y felix]
-    - agregá [move_to_in_progress](exchange) con ellos subcribers: [matias escudero, y matias bertelot](agilebot)
-    - agregá [move_to_done](exchange) con ellos subcribers: [matias bertelot , jose , emiliano escudero](agilebot)
-    - publicar [move_to_done](exchange) con estos subcribers: [matias bertelot , jose , emiliano escudero](agilebot)
-
-
-
 
 ## otras intenciones que no van al caso y deveria eliminar
 #se definen ejemplos de la intencion de saludar

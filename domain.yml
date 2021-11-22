@@ -8,11 +8,12 @@ intents:
   - cambiar_modo_agilebot
   - agregar_exchange
   - remover_un_exchange
-  - remove_all_subscribers
-  - remove_agilebot_from_all
-  - remove_agilebot_from_some
+  - change_callback
   - add_exchange_subscriber
+  - post_event
   - publish_exchange
+  - remove_agilebot_from_all 
+  - remove_agilebot_from_some
   - saludar
   - despedirse
   - afirmar
@@ -41,9 +42,15 @@ slots:
     type: text
   evento:
     type: text
-  activity_name:
+  activity:
     type: text
   exchange:
+    type: text
+  parametro:
+    type: text
+  callback:
+    type: text
+  metodo:
     type: text
 
 session_config:
@@ -53,10 +60,16 @@ session_config:
 entities: 
   - evento
   - artefacto
-  - activity_name 
+  - activity
   - modo_agilebot
   - agilebot
   - rol
+  - exchange
+  - parametro
+  - callback
+  - metodo
+
+
 
 # se definen cada una de las respuestas que se le pueden dar a las intents
 responses:
@@ -91,6 +104,8 @@ actions:
   - action_create_exchange
   - action_remove_exchange
   - action_all_suscribers
-  - action_remove_agilebot_from_all
-  - action_remove_agilebot_from_some
   - action_add_subscriber
+  - action_change_callback
+  - action_post_event
+  - action_remove_agilebot_from_all 
+  - action_remove_agilebot_from_some
