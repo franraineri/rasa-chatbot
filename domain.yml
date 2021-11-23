@@ -7,7 +7,7 @@ intents:
   - cambiar_rol_agilebot
   - cambiar_modo_agilebot
   - agregar_exchange
-  - remover_un_exchange
+  - remover_exchange
   - change_callback
   - add_exchange_subscriber
   - post_event

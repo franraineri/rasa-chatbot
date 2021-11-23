@@ -36,9 +36,7 @@ class action_create_agilebot(Action):
     def name(self):
         return "action_create_agilebot"
 
-    def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
-             # hay dos trackers distintos. from rasa_sdk import Action, Tracker
-        
+    def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente        
         agilebot = tracker.slots.get("agilebot")
         rol = tracker.slots.get("rol")
         mode = tracker.slots.get("modo_agilebot")
@@ -54,7 +52,8 @@ class action_change_agilebot_role(Action):
     def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
         
         agilebot = tracker.slots.get("agilebot")
-        rol = tracker.slots.get("rol")  
+        rol = tracker.slots.get("rol") 
+        intent = tracker.latest_message['intent'].get('name')
         dispatcher.utter_message(intent + "®" + agilebot + "®" + rol)
         return []
 
@@ -65,9 +64,9 @@ class action_change_agilebot_mode(Action):
         return "action_change_agilebot_mode"
     
     def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
-        dispatcher.utter_message("[INFO] cambiando modo de agilebot")     # hay dos trackers distintos. from rasa_sdk import Action, Tracker
         agilebot = tracker.slots.get("agilebot")
         mode = tracker.slots.get("modo_agilebot")  
+        intent = tracker.latest_message['intent'].get('name')
         dispatcher.utter_message(intent + "®" + agilebot + "®" + mode)
         return []
 
@@ -79,7 +78,7 @@ class action_create_exchange(Action):
     def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
         exchange = tracker.slots.get("exchange")
         intent = tracker.latest_message['intent'].get('name')
-        dispatcher.utter_message(intent+"®"+ exchange)     
+        dispatcher.utter_message(intent+"®"+exchange)     
         return []
 
 class action_remove_exchange(Action):
@@ -90,8 +89,11 @@ class action_remove_exchange(Action):
     def run(self, dispatcher, tracker, domain): # tracker lleva el historial, todo. # dispacher manda mensajes al user # domain es el dominio del agente
         exchange = tracker.slots.get("exchange")
         intent = tracker.latest_message['intent'].get('name')
-
-        dispatcher.utter_message(intent+"®"+ exchange)     
+        #print (type(exchange),exchange,"exchange")
+        #print (type(intent), intent, "intent")
+        print (type(exchange))
+        print (type(intent))
+        dispatcher.utter_message(intent+"®"+exchange)     
         return []
 
 # class action_post_event(Action):
@@ -122,7 +124,7 @@ class action_change_callback(Action):
         method = tracker.slots.get("metodo")
         exchanges = tracker.slots.get("exchange") 
         intent = tracker.latest_message['intent'].get('name')
-        dispatcher.utter_message(intent+"®"+ exchange+"®"+agilebot+"®"+activity)     
+        dispatcher.utter_message(intent+"®"+ exchanges+"®"+nombre+"®"+method)     
 
         return[]      
 

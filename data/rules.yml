@@ -29,7 +29,7 @@ rules:
 
 - rule: eliminar un exchange
   steps:
-  - intent: remover_un_exchange
+  - intent: remover_exchange
   - action: action_remove_exchange
 
 - rule: cambiar callback
