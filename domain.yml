@@ -12,7 +12,7 @@ intents:
   - add_exchange_subscriber
   - post_event
   - publish_exchange
-  - remove_agilebot_from_all 
+  - remove_agilebot_from_all
   - remove_agilebot_from_some
   - saludar
   - despedirse
@@ -57,7 +57,7 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 
-entities: 
+entities:
   - evento
   - artefacto
   - activity
@@ -69,32 +69,30 @@ entities:
   - callback
   - metodo
 
-
-
 # se definen cada una de las respuestas que se le pueden dar a las intents
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: "Hey! How are you?"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
 
   utter_did_that_help:
-  - text: "Did that help you?"
+    - text: "Did that help you?"
 
   utter_happy:
-  - text: "Great, carry on!"
+    - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "I am a bot, powered by Rasa."
 
   utter_no_understanding:
-  - text: "Sorry, I didn't get that."
-  - text: "Disculpa, pero no entendí, tal vez no puedo entender eso"
+    - text: "Sorry, I didn't get that."
+    - text: "Disculpa, pero no entendí, tal vez no puedo entender eso"
 
 actions:
   - action_send_message
@@ -107,7 +105,7 @@ actions:
   - action_add_subscriber
   - action_change_callback
   - action_post_event
-  - action_remove_agilebot_from_all 
+  - action_remove_agilebot_from_all
   - action_remove_agilebot_from_some
   - action_remove_all_subscribers
   - action_add_exchange_subscriber

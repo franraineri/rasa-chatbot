@@ -99,3 +99,20 @@ request.post.rasa
 
 
 Las ultimas 4 acciones no tienen metodo en el dispatcher 
+
+### EJEMPLOS DE USO DE PARAMETROS ###
+
+# ACTIVIDAD: create_kanban   parametro: { "columns" : "to-do, in progress" }
+# parameters["columns"]:
+# answer["creado"] = parameters["kanban_id"]
+# time.sleep(parameters["sleep"])
+
+#   agregar tarea
+# parameters["artifact"], parameters["task"]
+
+#   notificar nueva tarea
+# parameters["kanban_name"]
+
+#  mover tarea columna
+# parameters["artifact"], parameters["movement"]
+# parameters["movement"]["task_id"]
