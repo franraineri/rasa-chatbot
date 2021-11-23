@@ -384,7 +384,7 @@ nlu:
 
 ### EJEMPLOS DE USO DE PARAMETROS ###
 
-# ACTIVIDAD: create_kanban  { "columns" : "to-do, in progress" }
+# ACTIVIDAD: create_kanban   parametro: { "columns" : "to-do, in progress" }
 # parameters["columns"]:
 # answer["creado"] = parameters["kanban_id"]
 # time.sleep(parameters["sleep"])
